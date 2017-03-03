@@ -484,9 +484,16 @@ SPELLCHECK_SRC = \
 	protocols/minicol.txt \
 	protocols/oneac.txt
 
-NUT_SPELL_DICT = nut.dict
+### Note: currently the NUT makefiles' implementation of spellcheck rules
+### assumes use of its own nut.dict. When it becomes possible to split it
+### out, consider adding  NUT_SPELL_DICT="$(NUT_SPELL_DICT)"  to command
+### and uncommenting the line below. If you use spellcheck-interactive and
+### add some more exceptions, be ready to commit a pull request from the
+### "nut" submodule as well (and do revise the changed dictionary so you
+### only add words and roll back anything your aspell might remove).
+#NUT_SPELL_DICT = nut.dict
 
 spellcheck spellcheck-interactive spellcheck-sortdict:
-	$(MAKE) -f $(top_builddir)/nut/docs/Makefile SPELLCHECK_SRC="$(SPELLCHECK_SRC)" NUT_SPELL_DICT="$(NUT_SPELL_DICT)" $@
+	$(MAKE) -f $(top_builddir)/nut/docs/Makefile SPELLCHECK_SRC="$(SPELLCHECK_SRC)" $@
 
 ###
