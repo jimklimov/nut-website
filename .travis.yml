@@ -10,9 +10,6 @@ language:
 python:
 - '2.7'
 
-cache:
-- ccache
-
 os:
 - linux
 
