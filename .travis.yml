@@ -18,29 +18,24 @@ os:
 
 sudo: false
 
+addons:
+  apt:
+    packages: &deps_gendocs
+    - asciidoc
+    - xsltproc
+    - dblatex
+    - docbook-xsl
+    - docbook-xsl-ns
+    - source-highlight
+    - libxml2-utils
+    - aspell
+    - aspell-en
+
 # Builds with customized setups
-matrix:
-  include:
-  - env: BUILD_TYPE=spellcheck
-    os: linux
-    addons:
-      apt:
-        packages: &deps_aspell
-        - aspell
-        - aspell-en
-  - env: BUILD_TYPE=website
-    os: linux
-    sudo: false
-    addons:
-      apt:
-        packages: &deps_gendocs
-        - asciidoc
-        - xsltproc
-        - dblatex
-        - docbook-xsl
-        - docbook-xsl-ns
-        - source-highlight
-        - libxml2-utils
+env:
+  matrix:
+    - BUILD_TYPE=spellcheck
+    - BUILD_TYPE=website
 
 before_install:
 - if [ $TRAVIS_OS_NAME == "osx" ] ; then brew update; brew install binutils asciidoc docbook-xsl ; XML_CATALOG_FILES=/usr/local/etc/xml/catalog ; export XML_CATALOG_FILES ; fi
@@ -50,6 +45,6 @@ script:
 - case "$BUILD_TYPE" in
     website) ./autogen.sh && ./configure && make ;;
     spellcheck) ./autogen.sh && ./configure && ( cd nut && ./configure --without-all --with-docs=man ) && make spellcheck ;;
-    default) exit 0 ;;
+    default|'') exit 0 ;;
     *) echo "Unknown BUILD_TYPE='$BUILD_TYPE'" >&2 ; exit 1;;
   esac
