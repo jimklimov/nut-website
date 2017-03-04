@@ -24,8 +24,8 @@ os:
 
 sudo: false
 
-services:
-- docker
+#services:
+#- docker
 
 addons:
   apt:
@@ -39,7 +39,7 @@ addons:
     - libxml2-utils
     - aspell
     - aspell-en
-    - python-lxml
+#   - python-lxml
 
 # Builds with customized setups
 env:
