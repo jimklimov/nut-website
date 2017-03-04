@@ -1503,7 +1503,7 @@ Normally, this is set to +0+, so you must enter the appropriate password level b
 |16		|*+fullload+* (*+l+*)			|16 FullLoad% 100			|Change not allowed			|Not applicable				|The percent of the Fortress' power that your equipment is using.
 |17		|*+watts+* (*+w+*)			|17 Watts 970				|Change not allowed			|Not applicable				|The Total "real power" your equipment is drawing from the Fortress.
 |18		|*+powerfactor+* (*+pf+*)		|18 PF 0.69 Dist			|Change not allowed			|Not applicable				|The power factor of your equipment.
-This is the difference in the way it draws output volts an current.
+This is the difference in the way it draws output volts and current.
 Power factor = parameter 17 divided by parameter 5.
 This parameter also tells whether power factor is leading (+Lead+), lagging (+Lag+) or distortion (+Dist+).
 
