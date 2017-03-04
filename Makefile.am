@@ -490,7 +490,8 @@ SPELLCHECK_SRC = \
 ### and uncommenting the line below. If you use spellcheck-interactive and
 ### add some more exceptions, be ready to commit a pull request from the
 ### "nut" submodule as well (and do revise the changed dictionary so you
-### only add words and roll back anything your aspell might remove).
+### only add words and roll back anything your aspell might remove) and
+### to promote the submodule reference from nut-website later on.
 #NUT_SPELL_DICT = nut.dict
 
 spellcheck spellcheck-interactive spellcheck-sortdict:
