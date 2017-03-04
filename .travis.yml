@@ -10,6 +10,15 @@ language:
 python:
 - '2.7'
 
+cache:
+  pip: true
+  directories:
+    - output
+    - nut
+    - ddl
+    - package
+    - source
+
 os:
 - linux
 
@@ -45,6 +54,7 @@ install:
 - if [ "$BUILD_TYPE" != spellcheck ] ; then pip install pycparser && pip install lxml && pip install simplejson ; fi
 
 # Hand off to generated script for each BUILD_TYPE
+# TODO: Check if we need to remove the output/ dir before website (re)build
 script:
 - case "$BUILD_TYPE" in
     website) ./autogen.sh && ./configure && make ;;
